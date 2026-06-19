@@ -1,15 +1,130 @@
+/* ============================================================
+   篝火（Kagaribi）— TRPG GM準備ボードのテーマ
+   参考デザイン GM Prep Board (standalone).html のトークンを反映。
+   ランプの灯りのような暖色。GMの作業画面（board）が既定。
+   ============================================================ */
+
 :root {
-  --bg: #0f1117;
-  --panel: #1a1d27;
-  --panel-2: #232733;
-  --border: #2e3342;
-  --text: #e6e8ee;
-  --muted: #9aa0b0;
-  --accent: #5865f2; /* Discord blurple */
-  --accent-hover: #4752c4;
-  --success: #3ba55d;
-  --error: #ed4245;
-  --radius: 10px;
+  /* --- Warm ink neutrals（board） --- */
+  --ink-960: #14110c;
+  --ink-920: #1a160f;
+  --ink-880: #221c13;
+  --ink-840: #2b2418;
+  --ink-780: #382f20;
+  --ink-700: #4a3f2b;
+  --ink-600: #61543a;
+  --ink-500: #807052;
+  --ink-400: #9d8c6c;
+  --ink-300: #bcab88;
+  --ink-200: #d8c9a6;
+  --ink-100: #ece1c6;
+  --ink-050: #f6efdc;
+
+  /* --- Parchment（公開ビュー / フライヤー） --- */
+  --parch-050: #faf4e6;
+  --parch-100: #f4ead2;
+  --parch-200: #e9d8b4;
+  --parch-300: #dcc596;
+  --parch-edge: #c8ad7a;
+
+  /* --- Lamplight amber（primary / 灯火） --- */
+  --amber-200: #f6dd9b;
+  --amber-300: #f0cc6f;
+  --amber-400: #e4b13c;
+  --amber-500: #d29a1d;
+  --amber-600: #ad7a14;
+  --amber-700: #835b12;
+
+  /* --- Ember oxblood（danger） --- */
+  --ember-300: #d8775a;
+  --ember-400: #c4502f;
+  --ember-500: #a53a22;
+  --ember-600: #832c1a;
+
+  /* --- Moss（success / 100%） --- */
+  --moss-300: #a3ba74;
+  --moss-400: #7f9a52;
+  --moss-500: #5f7d3a;
+  --moss-600: #4a6330;
+
+  /* --- Discord blurple（共有チャンネル） --- */
+  --blurple-400: #7984f5;
+  --blurple-500: #5865f2;
+  --blurple-600: #4752c4;
+
+  /* === Semantic aliases — BOARD（dark, 既定） === */
+  --bg: var(--ink-960);
+  --surface: var(--ink-920);
+  --surface-raised: var(--ink-880);
+  --surface-card: var(--ink-880);
+  --surface-inset: var(--ink-960);
+  --surface-hover: var(--ink-840);
+
+  --border: rgba(210, 154, 29, 0.16);
+  --border-strong: rgba(216, 201, 166, 0.22);
+  --border-faint: rgba(216, 201, 166, 0.1);
+
+  --text-primary: var(--ink-100);
+  --text-secondary: var(--ink-300);
+  --text-muted: var(--ink-400);
+  --text-faint: var(--ink-500);
+  --text-on-amber: var(--ink-960);
+
+  --accent: var(--amber-500);
+  --accent-hover: var(--amber-400);
+  --accent-press: var(--amber-600);
+  --accent-soft: rgba(210, 154, 29, 0.14);
+
+  --success: var(--moss-500);
+  --success-soft: rgba(95, 125, 58, 0.18);
+  --danger: var(--ember-500);
+  --danger-soft: rgba(165, 58, 34, 0.16);
+
+  --share: var(--blurple-500);
+  --share-hover: var(--blurple-400);
+
+  --glow-amber: rgba(228, 177, 60, 0.35);
+
+  /* === Parchment world（.on-paper でサブツリーに適用） === */
+  --paper-bg: var(--parch-050);
+  --paper-surface: var(--parch-100);
+  --paper-border: var(--parch-edge);
+  --paper-text: #3a2c16;
+  --paper-text-soft: #6b5733;
+  --paper-accent: var(--amber-600);
+
+  /* --- Typography --- */
+  --font-display: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  --font-ui: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --tracking-wider: 0.12em;
+
+  /* --- Spacing / radii / shadows / motion --- */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+  --radius: var(--radius-lg); /* 旧トークン互換 */
+
+  --shadow-sm: 0 1px 2px rgba(10, 7, 3, 0.45);
+  --shadow-md: 0 4px 14px rgba(10, 7, 3, 0.5);
+  --shadow-lg: 0 14px 40px rgba(8, 5, 2, 0.55);
+  --shadow-inset: inset 0 1px 0 rgba(255, 240, 200, 0.05);
+  --shadow-paper: 0 1px 0 rgba(120, 92, 42, 0.18), 0 8px 24px rgba(120, 92, 42, 0.12);
+
+  --glow-beacon: 0 0 28px -4px var(--glow-amber);
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
 }
 
 * {
@@ -18,105 +133,148 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN',
-    'Hiragino Sans', Meiryo, sans-serif;
+  font-family: var(--font-ui);
+  font-size: 15px;
   background: var(--bg);
-  color: var(--text);
+  color: var(--text-primary);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--amber-200);
 }
 
 .app {
   max-width: 760px;
   margin: 0 auto;
-  padding: 24px 16px 64px;
+  padding: 28px 20px 80px;
+}
+
+.app__header {
+  margin-bottom: 24px;
 }
 
 .app__header h1 {
-  font-size: 1.6rem;
-  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  letter-spacing: 0.01em;
+  margin: 0 0 18px;
+  color: var(--text-primary);
 }
 
 /* タブ */
 .tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 28px;
+  background: var(--surface-inset);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-faint);
 }
 
 .tabs__btn {
-  flex: 1;
-  padding: 10px 12px;
-  background: var(--panel);
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  padding: 8px 18px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.15s;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
 }
 
 .tabs__btn:hover {
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 .tabs__btn--active {
   background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
+  color: var(--text-on-amber);
+}
+
+.tabs__btn--active:hover {
+  color: var(--text-on-amber);
+}
+
+/* eyebrow / ラベル */
+.field__label,
+.overview legend {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  font-size: 0.7rem;
+  color: var(--text-muted);
 }
 
 /* 入力フィールド */
 .field {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .field__label {
   display: block;
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .field__input,
 .add-form input {
   width: 100%;
-  padding: 9px 11px;
-  background: var(--panel-2);
-  color: var(--text);
+  padding: 10px 12px;
+  background: var(--surface-inset);
+  color: var(--text-primary);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
   font-size: 0.95rem;
+  transition: border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.field__input::placeholder,
+.add-form input::placeholder {
+  color: var(--text-faint);
 }
 
 .field__input:focus,
 .add-form input:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .field__input--title {
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
 /* 概要 */
 .overview {
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  margin: 20px 0;
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  margin: 22px 0;
+  background: var(--surface-card);
+  box-shadow: var(--shadow-sm), var(--shadow-inset);
 }
 
 .overview legend {
   padding: 0 8px;
-  color: var(--muted);
-  font-size: 0.85rem;
 }
 
 .overview__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 4px 16px;
+  gap: 4px 18px;
 }
 
 @media (max-width: 520px) {
@@ -127,57 +285,67 @@ body {
 
 /* 全体進捗 */
 .overall-progress {
-  background: var(--panel);
+  background: var(--surface-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  margin-bottom: 24px;
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow-md), var(--shadow-inset);
 }
 
 .overall-progress h2 {
-  margin: 0 0 10px;
-  font-size: 1.1rem;
+  font-family: var(--font-display);
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .overall-progress__count {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.85rem;
   font-weight: 400;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 /* 進捗バー */
 .progress {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .progress__label {
   font-size: 0.85rem;
-  color: var(--muted);
+  color: var(--text-muted);
   min-width: 90px;
 }
 
 .progress__track {
   flex: 1;
   height: 12px;
-  background: var(--panel-2);
-  border-radius: 999px;
+  background: var(--surface-inset);
+  border-radius: var(--radius-pill);
   overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .progress__fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--success));
-  border-radius: 999px;
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, var(--amber-600), var(--amber-400));
+  border-radius: var(--radius-pill);
+  box-shadow: var(--glow-beacon);
+  transition: width var(--dur-base) var(--ease-out);
 }
 
 .progress__percent {
-  min-width: 42px;
+  min-width: 44px;
   text-align: right;
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-weight: 600;
+  color: var(--text-secondary);
 }
 
 /* カテゴリ */
@@ -188,27 +356,33 @@ body {
 }
 
 .category {
-  background: var(--panel);
+  background: var(--surface-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm), var(--shadow-inset);
 }
 
 .category__header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .category__header h3 {
+  font-family: var(--font-ui);
   margin: 0;
   font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .category__count {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 .task-list {
@@ -218,7 +392,12 @@ body {
 }
 
 .task {
-  padding: 4px 0;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border-faint);
+}
+
+.task:last-child {
+  border-bottom: none;
 }
 
 .task__label {
@@ -236,7 +415,7 @@ body {
 }
 
 .task__label--done span {
-  color: var(--muted);
+  color: var(--text-faint);
   text-decoration: line-through;
 }
 
@@ -244,44 +423,63 @@ body {
 .add-form {
   display: flex;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .add-form button {
   white-space: nowrap;
-  padding: 9px 14px;
-  background: var(--panel-2);
-  color: var(--text);
+  padding: 10px 16px;
+  background: var(--surface-hover);
+  color: var(--text-secondary);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
+  font-family: var(--font-ui);
   font-size: 0.9rem;
+  font-weight: 500;
+  transition: border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
 }
 
 .add-form button:hover {
   border-color: var(--accent);
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .empty {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.9rem;
   text-align: center;
-  padding: 16px;
+  padding: 18px;
 }
 
-/* 公開ビュー */
+/* ============================================================
+   公開ビュー — 羊皮紙のフライヤー（.on-paper でパレット反転）
+   ============================================================ */
 .public-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--radius);
-  padding: 20px 22px;
+  --bg: var(--paper-bg);
+  --surface-card: var(--parch-050);
+  --border: rgba(120, 92, 42, 0.28);
+  --text-primary: var(--paper-text);
+  --text-secondary: var(--paper-text-soft);
+  --text-muted: #8a744a;
+  --accent: var(--amber-600);
+
+  background: var(--paper-bg);
+  color: var(--paper-text);
+  border: 1px solid var(--paper-border);
+  border-left: 4px solid var(--amber-600);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-paper);
 }
 
 .public-card__title {
-  margin: 0 0 16px;
-  font-size: 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  margin: 0 0 18px;
+  font-size: 1.55rem;
+  color: var(--paper-text);
 }
 
 .public-card__overview {
@@ -297,55 +495,85 @@ body {
 
 .public-card__row dt {
   min-width: 90px;
-  color: var(--muted);
+  color: var(--paper-text-soft);
   font-size: 0.9rem;
 }
 
 .public-card__row dd {
   margin: 0;
+  color: var(--paper-text);
 }
 
 .public-card__progress h3 {
+  font-family: var(--font-ui);
   margin: 0 0 8px;
   font-size: 1rem;
+  font-weight: 600;
+  color: var(--paper-text);
+}
+
+/* 公開ビュー内の進捗バーは羊皮紙向けに調整 */
+.public-card .progress__track {
+  background: rgba(120, 92, 42, 0.18);
+  box-shadow: none;
+}
+
+.public-card .progress__fill {
+  background: linear-gradient(90deg, var(--amber-600), var(--amber-500));
+  box-shadow: none;
+}
+
+.public-card .progress__percent {
+  color: var(--paper-text);
 }
 
 .public-card__count {
   margin: 6px 0 0;
-  color: var(--muted);
+  color: var(--paper-text-soft);
   font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 .public-card__categories {
   list-style: none;
   padding: 14px 0 0;
   margin: 14px 0 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--paper-border);
   display: grid;
   gap: 4px;
   font-size: 0.92rem;
+  color: var(--paper-text-soft);
 }
 
-/* 共有 */
+.public-card__categories strong {
+  color: var(--paper-text);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 共有（Discord = blurple） */
 .share {
-  margin-top: 20px;
+  margin-top: 22px;
   text-align: center;
 }
 
 .share__button {
   padding: 12px 28px;
-  background: var(--accent);
+  background: var(--share);
   color: #fff;
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s;
+  box-shadow: var(--shadow-md);
+  transition: background var(--dur-fast) var(--ease-out);
 }
 
 .share__button:hover:not(:disabled) {
-  background: var(--accent-hover);
+  background: var(--share-hover);
 }
 
 .share__button:disabled {
@@ -355,14 +583,15 @@ body {
 
 .share__hint {
   margin: 12px 0 0;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.85rem;
 }
 
 .share__hint code {
-  background: var(--panel-2);
+  font-family: var(--font-mono);
+  background: var(--surface-hover);
   padding: 1px 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .share__status {
@@ -371,9 +600,9 @@ body {
 }
 
 .share__status--ok {
-  color: var(--success);
+  color: var(--moss-300);
 }
 
 .share__status--error {
-  color: var(--error);
+  color: var(--ember-300);
 }
