@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-ssr
+*.local
+
+# 環境変数（Webhook URL は絶対にコミットしない）
+.env
+.env.*
+!.env.example
+
+# エディタ・OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea
